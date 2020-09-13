@@ -1,8 +1,10 @@
-global class SchedulableJob implements Schedulable{
+global class SchedulableJob implements Schedulable {
 
     global void execute(SchedulableContext param1) {
-        System.debug('SchedulableJob started');
+
         BatchJob batchJob = new BatchJob();
-            Database.executeBatch(batchJob);
+        BatchJobIterable batchJobIterable = new BatchJobIterable();
+        Database.executeBatch(batchJob);
+        Database.executeBatch(batchJobIterable);
     }
 }

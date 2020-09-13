@@ -33,9 +33,14 @@ global class UpdateAccountAndContacts {
 
     private List<Account> getRelatedAccounts(List<Contact> contacts) {
         List<Account> relatedAccounts = new List<Account>();
+        List<Id> accountIds = new List<Id>();
+
         for (Contact contact : contacts) {
-            relatedAccounts.addAll([SELECT Id FROM Account WHERE Id = :contact.AccountId]);
+            accountIds.add(contact.AccountId);
         }
+
+        relatedAccounts.addAll([SELECT Id FROM Account WHERE Id IN :accountIds]);
+
         return relatedAccounts;
     }
 }

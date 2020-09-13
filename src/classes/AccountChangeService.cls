@@ -32,14 +32,11 @@ global class AccountChangeService {
     private static void assignAccountTasksToRandomUser(List<User> activeUsers, List<Task> taskList) {
 
         Integer userNumber = Integer.valueOf((Math.random() * activeUsers.size()));
-
         User userForAssignTask = activeUsers.get(userNumber);
-        System.debug(userForAssignTask.Id);
-        System.debug(userForAssignTask);
 
         for (Task task : taskList) {
             task.OwnerId = userForAssignTask.Id;
-            System.debug(task.OwnerId);
+
         }
         update(taskList);
     }

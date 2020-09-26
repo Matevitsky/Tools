@@ -19,4 +19,3 @@ public class BatchJobIterable implements Database.Batchable<Contact> {
     public void finish(Database.BatchableContext info) {
     }
 }
-

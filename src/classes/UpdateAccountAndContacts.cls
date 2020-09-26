@@ -39,7 +39,8 @@ global class UpdateAccountAndContacts {
             accountIds.add(contact.AccountId);
         }
 
-        relatedAccounts.addAll([SELECT Id FROM Account WHERE Id IN :accountIds]);
+        relatedAccounts.addAll([SELECT Id,BillingPostalCode,BillingCity,BillingCountry,BillingState,BillingStreet
+        FROM Account WHERE Id IN :accountIds]);
 
         return relatedAccounts;
     }
